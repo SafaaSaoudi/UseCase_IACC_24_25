@@ -1,0 +1,41 @@
+<h3>Liste Residences</h3>
+<input type="text" placeholder="Rechercher par adresse" [(ngModel)]="searchItem" />
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"style="margin-bottom: 20px" *ngFor="let item of filteredResidences()">
+      <div class="card" style="width: 18rem">
+        <img class="card-img-top" [src]="item.image" alt="no" />
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <button class="btn btn-primary" (click)="showLocation(item)">Show Location</button>
+  
+          <!-- <span *ngIf="etatA==true && item.address!='inconnu'">{{item.address}}</span> -->
+        
+  <!-- Question b nb: l'utilisation de ng-container car on a deux directives ngFor et ngSwitch -->
+         <div [ngSwitch]="item.status" class="status">
+            <ng-container *ngSwitchCase="'Disponible'">
+              <span class="status-icon available">✔️</span>
+              <span>Disponible</span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'En Construction'">
+              <span class="status-icon under-construction">🏗️</span>
+              <span>En Construction</span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Vendu'">
+              <span class="status-icon sold">❌</span>
+              <span>Vendu</span>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <span class="status-icon unknown">❓</span>
+              <span>Statut Inconnu</span>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-outline-primary"  (click)="addFavorite(item)">
+        {{ isFavorite(item) ? '👎Unlike' : '👍Like' }}
+      </button>
+    </div>
+  </div>
+</div>
