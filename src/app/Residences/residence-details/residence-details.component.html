@@ -1,0 +1,36 @@
+
+
+<div class="residence-details" *ngIf="residence">
+    <h2>{{ residence.name }}</h2>
+  
+    <div class="details">
+      <p><strong>Address:</strong> {{ residence.address }}</p>
+      <p><strong>Status:</strong> 
+        <span [ngClass]="{
+          'active': residence.status === 'Disponible',
+          'inactive': residence.status === 'En Construction',
+          'vendu': residence.status === 'Vendu'
+        }">
+          {{ residence.status }}
+        </span>
+      </p>
+      <div class="image-container">
+        <img [src]="residence.image" alt="{{ residence.name }}" />
+      </div>
+      <div> <button class="btn btn-primary" routerLink="/addResidence">Add Residence</button> &nbsp; <button class="btn btn-primary" routerLink="/addResidence" [queryParams]="{residence: residence.id}">Update Residence</button></div>
+    </div>
+  
+    
+  </div>
+  <button 
+    class="btn btn-outline-secondary" 
+    (click)="previousResidence()" 
+    [disabled]="currentResidenceIndex === 0">
+    ← Previous
+  </button>
+  <button 
+    class="btn btn-outline-secondary" 
+    (click)="nextResidence()" 
+    [disabled]="id === listResidences.length - 1">
+    Next →
+  </button>

@@ -1,6 +1,6 @@
-<h3>Liste Residences</h3>
+<h2 style="text-align: center; padding: 2%;">Liste Residences</h2>
 <input type="text" placeholder="Rechercher par adresse" [(ngModel)]="searchItem" />
-
+<br><br>
 <div class="container">
   <div class="row">
     <div class="col-md-4"style="margin-bottom: 20px" *ngFor="let item of filteredResidences()">
@@ -36,6 +36,13 @@
       <button class="btn btn-outline-primary"  (click)="addFavorite(item)">
         {{ isFavorite(item) ? '👎Unlike' : '👍Like' }}
       </button>
+
+      <button class="btn btn-outline-primary"  [routerLink]="['/details', item.id]">
+        Show Details
+      </button>
+
     </div>
   </div>
+  <button class="btn btn-dark"  routerLink="/addResidence">➕ Add new Residence</button>
 </div>
+
