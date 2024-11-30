@@ -1,1 +1,28 @@
-<p>apartments works!</p>
+<div *ngIf="listApartments && listApartments.length!=0 else alt">
+    <h2 align="center">Apartments</h2>
+    
+    <table class="table">
+        
+        <tr>
+            <th scope="col" >appartNum</th>
+            <th scope="col" >floorNum</th>
+            <th scope="col" >surface</th>
+            <th scope="col" >terrace</th>
+            <th scope="col" >category</th>
+            <th></th>
+        </tr>
+            <tr *ngFor="let A of listApartments" >
+                <td scope="row" >{{A.apartNum}}</td>
+                <td>{{A.floorNum}}</td> 
+                <td>{{A.surface}}</td> 
+                <td>{{A.terrace}}</td> 
+                <td>{{A.category}}</td> 
+            </tr>
+        
+    </table>
+</div>
+<ng-template #alt>
+    <h2  align="center">No appartments found!</h2>
+</ng-template>
+
+<button class="btn btn-outline-success" routerLink="/addApartment">New Apartment</button>

@@ -7,6 +7,7 @@ import { ApartmentsComponent } from './Apartments/apartments/apartments.componen
 import { ApartmentsByResidenceComponent } from './Apartments/apartments-by-residence/apartments-by-residence.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AddResidenceComponent } from './Residences/add-residence/add-residence.component';
+import { AddApartmentComponent } from './Apartments/add-apartment/add-apartment.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'addResidence', component: AddResidenceComponent},
   {path: 'apartments', component: ApartmentsComponent},
   {path: 'apartments/:idR', component: ApartmentsByResidenceComponent},
+  {path: 'addApartment', component: AddApartmentComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

@@ -1,1 +1,114 @@
-<p>add-apartment works!</p>
+<div class="container">
+    <br><br>
+  <form [formGroup]="apartForm" (ngSubmit)="SaveApart()">
+      <div class="row mb-3">
+          <label for="apartNum" class="col-sm-2 col-col-sm-2 col-form-label">Apartment Number: </label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" name="apartNum" id="apartNum" formControlName="apartNum" />
+          <div *ngIf="apartNum?.touched && apartNum?.invalid" class=" alert text-danger">
+              <div *ngIf="apartNum?.errors?.['required']" >
+                  Required field
+                </div>
+                <div *ngIf="apartNum?.errors?.['pattern']" >
+                  Champ doit être des chiffres
+                </div>
+            </div>  
+      </div>    
+      </div>
+          
+        <div class="row mb-3">
+          <label for="floorNum" class="col-sm-2 col-form-label">Floor Number: </label>
+          <div class="col-sm-10">
+          <input type="number" class="form-control" name="floorNum" id="floorNum" formControlName="floorNum"/>
+          <div *ngIf="floorNum!.touched && floorNum!.invalid" class="alert text-danger">
+              Required field
+            </div>     
+      </div>
+          
+        </div>
+        <div class="row mb-3">
+          <label for="surface" class="col-sm-2 col-form-label">Surface: </label>
+          <div class="col-sm-10">
+          <input type="number" class="form-control" name="surface" id="surface" />
+          <div *ngIf="surface!.touched && surface!.invalid" class="alert text-danger">
+              Required field
+            </div> 
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+          <label for="terrace" class="col-sm-2 col-form-label"> Terrace: </label>
+          <div class="col-sm-10">
+          <div class="form-check">
+              <input type="radio" class="form-check-input" name="terrace" formControlName="terrace" id="terrace" value="yes" /> 
+              <label class="form-check-label" for="terrace">
+                  Yes
+                </label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" name="terrace" formControlName="terrace" id="terrace" value="no" /> 
+                  <label class="form-check-label" for="terrace">
+                      No
+                    </label>
+                    </div>
+          <div *ngIf="terrace!.touched && terrace!.invalid" class="alert text-danger">
+              Required field
+            </div> 
+            </div>
+        </div>
+     
+        <div class="row mb-3">
+          <label for="surfaceTerrace" class="col-sm-2 col-form-label">Surface Terrace: </label>
+          <div class="col-sm-10">
+          <input type="number" class="form-control" name="surfaceTerrace" id="surfaceTerrace" [disabled]="terrace?.value=='no'" />
+          <div *ngIf="surfaceTerrace!.touched && surfaceTerrace!.invalid" class=" alert text-danger">
+              Required field
+            </div>  
+            </div> 
+      </div>
+        <div class="row mb-3">
+          <label for="category" class="col-sm-2 col-form-label">Category: </label>
+          <div class="col-sm-10">
+          <div class="form-check">
+          <input type="radio" class="form-check-input" name="category" id="category" value="S+1" /> 
+          <label class="form-check-label" for="category">
+              S+1
+            </label>
+            </div>
+            <div class="form-check">
+          <input type="radio" class="form-check-input" name="category" id="category" value="S+2" /> 
+          <label class="form-check-label" for="category">
+              S+2
+            </label>
+            </div>
+            <div class="form-check">
+          <input type="radio" class="form-check-input" name="category" id="category" value="S+3" />
+          <label class="form-check-label" for="category">
+              S+3
+            </label>
+            </div>
+          <div *ngIf="category!.touched && category!.invalid" class=" alert text-danger">
+              Required field
+            </div> 
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+          <label for="residence" class="col-sm-2 col-form-label">Residence: </label>
+          <div class="col-sm-10">
+            <select class="form-select" name="residence" id="residence" formControlName="residence">
+                <option value="">Select Residence</option>
+                <option *ngFor="let res of listResidences" [value]="res.id">{{res.name}}</option>
+                </select>
+
+          <div *ngIf="residence?.touched && residence?.invalid" class="alert text-danger">
+              Required field
+            </div> 
+            </div>
+        </div>
+        <div class="mb-3">
+          <input type="submit" class="btn btn-primary" [disabled]="apartForm.valid" value="Add" />
+        </div>  
+  </form>
+  
+  </div>
