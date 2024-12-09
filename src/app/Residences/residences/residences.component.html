@@ -43,6 +43,9 @@
       <button class="btn btn-outline-primary"  [routerLink]="['/apartments', item.id]">
         Apartments
       </button>
+      <button class="btn btn-outline-primary" (click)="delete(item.id)" >
+        Delete
+      </button>
 
     </div>
   </div>

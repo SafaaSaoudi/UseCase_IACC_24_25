@@ -57,83 +57,8 @@
         Required field
       </div>
     </div>
-  </div>
-
-  <div formArrayName="Apartments"> 
-    <button type="button" (click)="addApartment()">Ajouter un appartement</button>
-    <div *ngFor="let apartment of Apartments.controls; let i=index">
-      <h4>new apartment</h4>
-      <div [formGroupName]="i">
-        <div class="row mb-3">
-          <label for="apartNum" class="col-sm-2 col-col-sm-2 col-form-label">Apartment Number: </label>
-          <div class="col-sm-10">
-          <input type="text" class="form-control" name="apartNum" id="apartNum" formControlName="apartNum" /> 
-      </div>    
-      </div>
-          
-        <div class="row mb-3">
-          <label for="floorNum" class="col-sm-2 col-form-label">Floor Number: </label>
-          <div class="col-sm-10">
-          <input type="number" class="form-control" name="floorNum" id="floorNum" formControlName="floorNum"/>   
-      </div>
-          
-        </div>
-        <div class="row mb-3">
-          <label for="surface" class="col-sm-2 col-form-label">Surface: </label>
-          <div class="col-sm-10">
-          <input type="number" class="form-control" name="surface" id="surface" formControlName="surface" />
-          </div>
-        </div>
-        
-        <div class="row mb-3">
-          <label for="terrace" class="col-sm-2 col-form-label"> Terrace: </label>
-          <div class="col-sm-10">
-          <div class="form-check">
-              <input type="radio" class="form-check-input" name="terrace" formControlName="terrace" id="terrace" value="yes" /> 
-              <label class="form-check-label" for="terrace">
-                  Yes
-                </label>
-                </div>
-                <div class="form-check">
-                  <input type="radio" class="form-check-input" name="terrace" formControlName="terrace" id="terrace" value="no" /> 
-                  <label class="form-check-label" for="terrace">
-                      No
-                    </label>
-                    </div> 
-            </div>
-        </div>
      
-        <div class="row mb-3">
-          <label for="surfaceTerrace" class="col-sm-2 col-form-label">Surface Terrace: </label>
-          <div class="col-sm-10">
-          <input type="number" class="form-control" name="surfaceTerrace" id="surfaceTerrace" [disabled]="Apartments.get('terrace')?.value=='no'" /> 
-            </div> 
-      </div>
-        <div class="row mb-3">
-          <label for="category" class="col-sm-2 col-form-label">Category: </label>
-          <div class="col-sm-10">
-          <div class="form-check">
-          <input type="radio" class="form-check-input" name="category" id="category" value="S+1" formControlName="category" /> 
-          <label class="form-check-label" for="category">
-              S+1
-            </label>
-            </div>
-            <div class="form-check">
-          <input type="radio" class="form-check-input" name="category" id="category" value="S+2"  formControlName="category" /> 
-          <label class="form-check-label" for="category">
-              S+2
-            </label>
-            </div>
-            <div class="form-check">
-          <input type="radio" class="form-check-input" name="category" id="category" value="S+3" formControlName="category" />
-          <label class="form-check-label" for="category">
-              S+3
-            </label>
-            </div>
-            </div>
-        </div>
-      </div>
-    </div>
+        
     <button class="btn btn-outline-primary" [disabled]="addResidenceForm.invalid" >Add</button>
   </div>
 </form>

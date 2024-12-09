@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Apartment } from 'src/app/Core/Models/apartment';
 import { Residence } from 'src/app/Core/Models/residence';
+import { CommonService } from 'src/app/Core/Services/common.service';
 
 @Component({
   selector: 'app-apartments',
@@ -8,7 +9,7 @@ import { Residence } from 'src/app/Core/Models/residence';
   styleUrls: ['./apartments.component.css']
 })
 export class ApartmentsComponent {
-
+  constructor( private cm:CommonService) { }
   listResidences:Residence[]=[
     {id:1,"name": "El fel","address":"Borj Cedria", "image":"../../assets/images/R1.jpg", status: "Disponible"},
     {id:2,"name": "El yasmine", "address":"Ezzahra","image":"../../assets/images/R2.jpg", status: "Disponible" },
@@ -24,5 +25,9 @@ export class ApartmentsComponent {
     {id:4,"apartNum":204,"floorNum":2,"surface":150,"terrace":true,"surfaceterrace":30,"category":"S+3",ResidenceId: this.listResidences[2].id},
   ];
 
+  ngOnInit(){
+    console.log(this.cm.getSameValueOf(this.listApartments,"surface",150));
+    
+  }
 
 }

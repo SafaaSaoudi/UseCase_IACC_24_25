@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Residence } from 'src/app/Core/Models/residence';
+import { CommonService } from 'src/app/Core/Services/common.service';
+import { ResidenceService } from 'src/app/Core/Services/residence.service';
 
 @Component({
   selector: 'app-residences',
@@ -8,16 +10,19 @@ import { Residence } from 'src/app/Core/Models/residence';
 })
 export class ResidencesComponent {
 
-  listResidences:Residence[]=[
-     {id:1,"name": "El fel","address":"Borj Cedria", "image":"../../assets/images/R1.jpg", status: "Disponible"},
-     {id:2,"name": "El yasmine", "address":"Ezzahra","image":"../../assets/images/R2.jpg", status: "Disponible" },
-     {id:3,"name": "El Arij", "address":"Rades","image":"../../assets/images/R3.jpg", status: "Vendu"},
-     {id:4,"name": "El Anber","address":"inconnu", "image":"../../assets/images/R3.jpg", status: "En Construction"}
-   ];
+  listResidences:Residence[]=[];
    //etatA = false;
    favoriteResidences: Residence[] = [];
    searchItem: string = '';
 
+   constructor(private cm:CommonService, private residenceR:ResidenceService){}
+  
+   ngOnInit(){
+    console.log(this.cm.getSameValueOf(this.listResidences,"status", "Disponible"));
+    this.residenceR.getAllResidences().subscribe(
+      data => this.listResidences = data
+    );
+   }
    showLocation(residence: Residence) {
     if (residence.address === "inconnu") {
       alert(`L'adresse de la résidence "${residence.name}" est inconnu.`);
@@ -49,6 +54,15 @@ export class ResidencesComponent {
     // Filtre les résidences en fonction de l'adresse
     return this.listResidences.filter(residence => 
       residence.address.toLowerCase().includes(this.searchItem.toLowerCase())
+    );
+  }
+
+
+  delete(id:number){
+    this.residenceR.deleteResidence(id).subscribe(
+      ()=>{alert("Résidence supprimée avec succès");
+                 this.listResidences = this.listResidences.filter(r => r.id !== id);
+      }
     );
   }
 }
