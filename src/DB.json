@@ -31,6 +31,26 @@
   ],
   "Apartments": [
     {
+      "id": 1,
+      "apartNum": 11,
+      "floorNum": 0,
+      "surface": 100,
+      "terrace": true,
+      "surfaceterrace": 20,
+      "category": "S+1",
+      "ResidenceId": 1
+    },
+    {
+      "id": 2,
+      "apartNum": 102,
+      "floorNum": 1,
+      "surface": 130,
+      "terrace": false,
+      "surfaceterrace": 0,
+      "category": "S+2",
+      "ResidenceId": 1
+    },
+    {
       "id": 3,
       "apartNum": 103,
       "floorNum": 1,
@@ -39,6 +59,16 @@
       "surfaceterrace": 30,
       "category": "S+3",
       "ResidenceId": 2
+    },
+    {
+      "id": 4,
+      "apartNum": 204,
+      "floorNum": 2,
+      "surface": 150,
+      "terrace": true,
+      "surfaceterrace": 30,
+      "category": "S+3",
+      "ResidenceId": 3
     }
   ]
 }
