@@ -2,10 +2,10 @@
   "Residences": [
     {
       "id": 1,
-      "name": "El fel",
+      "name": "El felfel",
       "address": "Borj Cedria",
       "image": "../../assets/images/R1.jpg",
-      "status": "Disponible"
+      "status": "En Construction"
     },
     {
       "id": 2,
@@ -24,9 +24,16 @@
     {
       "id": 4,
       "name": "El Anber",
-      "address": "inconnu",
+      "address": "Tunis",
       "image": "../../assets/images/R3.jpg",
       "status": "En Construction"
+    },
+    {
+      "id": "id-azfvtv4rn-1734341297670",
+      "name": "test",
+      "address": "Soliman",
+      "image": "./assetes/images/R1.jpg",
+      "status": "Disponible"
     }
   ],
   "Apartments": [

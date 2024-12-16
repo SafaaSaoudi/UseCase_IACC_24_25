@@ -13,7 +13,11 @@ export class ApartmentService {
   getApartments(){
     return this.hhtp.get<Apartment[]>(this.apartsURL);
   }
+getApartmentByRsidence(idR:number){
+  //return this.hhtp.get<Apartment[]>(`${this.apartsURL}?ResidenceId=${idR}`);
+  return this.hhtp.get<Apartment[]>(this.apartsURL+'?ResidenceId='+idR);
 
+}
   deleteApartment(id:number){
     return this.hhtp.delete(`${this.apartsURL}/${id}`);
   }
